@@ -1,25 +1,30 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_string.dart';
 
 ThemeData appTheme() => ThemeData(
-  useMaterial3: true,
-  visualDensity: VisualDensity.adaptivePlatformDensity,
-
-  popupMenuTheme: const  PopupMenuThemeData(
-    shape:  RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(22.0),
-          ),
-        )
-  ),
+      useMaterial3: true,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      popupMenuTheme: const PopupMenuThemeData(
+          shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(22.0),
+        ),
+      )),
       primarySwatch: Colors.deepOrange,
       primaryColor: AppColors.primaryColor,
       hintColor: AppColors.secondaryFontColor,
       brightness: Brightness.light,
-      bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.transparent),
+      textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+            textStyle: MaterialStateProperty.resolveWith((states) => TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold)),
+              foregroundColor: MaterialStateColor.resolveWith(
+                  (states) => AppColors.primaryColor))),
+      bottomSheetTheme:
+          const BottomSheetThemeData(backgroundColor: Colors.transparent),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: AppColors.primaryColor,
       ),
@@ -31,47 +36,20 @@ ThemeData appTheme() => ThemeData(
       fontFamily: AppStrings.fontFamily,
       scaffoldBackgroundColor: Colors.white,
       cardTheme: CardTheme(
-        elevation: 10,
-        color: AppColors.secondaryFontColor,
-        shadowColor: Colors.black,
+        elevation: 0,
+        color: AppColors.greyLight,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(20.0),
+            Radius.circular(28.0),
           ),
         ),
       ),
       textTheme: TextTheme(
-
         bodyMedium: TextStyle(
-              fontFamily: AppStrings.fontFamily,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.secondaryFontColor,
-              overflow: TextOverflow.ellipsis
-          ),
-        displayLarge: TextStyle(
-            fontFamily: AppStrings.fontFamily,
-            fontSize: 20.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primaryDark,
-            overflow: TextOverflow.ellipsis),
-        displayMedium: TextStyle(
-            fontFamily: AppStrings.fontFamily,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primaryDark,
-            overflow: TextOverflow.ellipsis),
-        displaySmall: TextStyle(
-            fontFamily: AppStrings.fontFamily,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primaryDark,
-
-            overflow: TextOverflow.ellipsis),
-        headlineSmall: TextStyle(
             fontFamily: AppStrings.fontFamily,
             fontSize: 14.sp,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
+            color: AppColors.secondaryFontColor,
             overflow: TextOverflow.ellipsis),
         titleLarge: TextStyle(
             fontFamily: AppStrings.fontFamily,
@@ -79,8 +57,18 @@ ThemeData appTheme() => ThemeData(
             fontWeight: FontWeight.bold,
             color: AppColors.primaryColor,
             overflow: TextOverflow.ellipsis),
-
+        titleMedium: TextStyle(
+            fontFamily: AppStrings.fontFamily,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w600,
+            overflow: TextOverflow.ellipsis),
+        headlineLarge:
+            TextStyle(color: AppColors.primaryFontColor, fontSize: 30.sp),
+        headlineMedium: TextStyle(
+            color: AppColors.primaryFontColor, fontSize: 18.sp , fontWeight: FontWeight.bold
+        )
       ),
       bottomAppBarTheme: BottomAppBarTheme(color: AppColors.primaryColor),
+      focusColor: AppColors.primaryColor,
 
     );

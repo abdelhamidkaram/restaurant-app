@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food/core/utils/app_colors.dart';
 import 'package:food/core/utils/assets_manger.dart';
-
 import '../../config/route/app_route.dart';
+import '../../core/shared_widgets/logo_with_title.dart';
+import '../../core/shared_widgets/title_and_sub.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _goNext() async {
-    Navigator.pushReplacementNamed(context, AppRouteStrings.login);
+    Navigator.pushReplacementNamed(context, AppRouteStrings.welcome);
 
   }
 
@@ -52,40 +51,14 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
               image: Image.asset(ImagesManger.splashBackground).image,
-              fit: BoxFit.cover,
-              opacity: 0.10),
+              fit: BoxFit.cover, ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              backgroundColor: AppColors.primaryColor,
-              radius: 74.h,
-              child: Text('logo app' , style: TextStyle(
-                fontSize: 12.sp
-              ),),
-            ),
+            const LogoWidget(),
             SizedBox(height: 6.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("restaurant", style: Theme.of(context).textTheme.titleLarge,),
-                SizedBox(
-                  width: 9.w,
-                ),
-                Text("App", style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: AppColors.primaryDark
-                )),
-
-              ],
-            ),
-            SizedBox(
-              height: 6.h,
-            ),
-            Text("FOOD DELIVERY", style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: AppColors.primaryDark,
-                fontSize: 10.sp
-            )),
+            const TitleAndSub(subTitle: "FOOD DELIVERY",),
           ],
         ),
       ),
@@ -99,3 +72,4 @@ class _SplashScreenState extends State<SplashScreen> {
     super.dispose();
   }
 }
+
