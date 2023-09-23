@@ -35,53 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             appBar: buildAppBar(),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: FloatingActionButton.extended(
-              backgroundColor: Colors.white,
-              onPressed: () {},
-              label: Container(
-                width: 220.w,
-                padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w , vertical: 10.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.person,
-                          color: Colors.grey,
-                          size: 30.sp,
-                        ),
-                        Text('Home' , style: TextStyle(
-                            fontSize: 12.sp ,
-                          color: Colors.grey
-                        ),)
-                      ],
-                    ),
-                Column(
-                  children: [
-                    Image.asset(ImagesManger.bagIcon),
-                    Text('Order' , style: TextStyle(
-                        fontSize: 12.sp ,
-                        color: Colors.grey
-
-                    ),)
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset(ImagesManger.userIcon),
-                    Text('Profile' , style: TextStyle(
-                        fontSize: 12.sp ,
-                        color: Colors.grey ,
-
-                    ),)
-                  ],
-                ),
-
-            ],
-                ),
-              ),
-            ),
+            floatingActionButton: buildFloatingActionButton(),
             floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
             body: SingleChildScrollView(
               child: Column(
@@ -145,6 +99,53 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
     );
+  }
+
+  FloatingActionButton buildFloatingActionButton() {
+    return FloatingActionButton.extended(
+            backgroundColor: Colors.white,
+            onPressed: () {},
+            label: Container(
+              width: 220.w,
+              padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w , vertical: 10.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Image.asset(ImagesManger.homeIcon),
+
+                      Text('Home' , style: TextStyle(
+                          fontSize: 12.sp ,
+                        color: Colors.grey
+                      ),)
+                    ],
+                  ),
+              Column(
+                children: [
+                  Image.asset(ImagesManger.bagIcon),
+                  Text('Order' , style: TextStyle(
+                      fontSize: 12.sp ,
+                      color: Colors.grey
+
+                  ),)
+                ],
+              ),
+              Column(
+                children: [
+                  Image.asset(ImagesManger.userIcon),
+                  Text('Profile' , style: TextStyle(
+                      fontSize: 12.sp ,
+                      color: Colors.grey ,
+
+                  ),)
+                ],
+              ),
+
+          ],
+              ),
+            ),
+          );
   }
 
   AppBar buildAppBar() {
