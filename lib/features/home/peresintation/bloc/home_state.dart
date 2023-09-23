@@ -34,3 +34,29 @@ class GetPopularProductError extends HomeState {
   @override
   List<Object> get props => [];
 }
+
+class GetAllProductSuccess extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+class GetAllProductLoading  extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+class GetAllProductError extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+
+class GetAllCategoriesSuccess extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+class GetAllCategoriesLoading  extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+class GetAllCategoriesError extends HomeState {
+  @override
+  List<Object> get props => [];
+}
