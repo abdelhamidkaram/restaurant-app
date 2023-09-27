@@ -25,7 +25,7 @@ class _HomeTabsState extends State<HomeTabs> {
       (index) {
         List<Product> prodcts =
             widget.products.where((e) => e.cat == cats[index].id).toList();
-        return Container(
+        return SizedBox(
           width: double.infinity,
           key: keys[index],
           child: Column(

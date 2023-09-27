@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/config/route/app_route.dart';
 import 'package:food/core/models/product.dart';
 import 'package:food/core/utils/app_colors.dart';
 import 'package:food/core/utils/assets_manger.dart';
@@ -101,53 +102,73 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  FloatingActionButton buildFloatingActionButton() {
-    return FloatingActionButton.extended(
-            backgroundColor: Colors.white,
-            onPressed: () {},
-            label: Container(
-              width: 220.w,
-              padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w , vertical: 10.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Image.asset(ImagesManger.homeIcon),
-
-                      Text('Home' , style: TextStyle(
-                          fontSize: 12.sp ,
+  Widget buildFloatingActionButton() {
+    return  Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          width: 220.w,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: AppColors.greyLight ,
+            ) ,
+            borderRadius: BorderRadius.circular(12)
+          ),
+          padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w , vertical: 10.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushReplacementNamed(context, AppRouteStrings.home);
+                },
+                child: Column(
+                  children: [
+                    Image.asset(ImagesManger.homeIcon),
+                    Text('Home' , style: TextStyle(
+                        fontSize: 12.sp ,
                         color: Colors.grey
-                      ),)
-                    ],
-                  ),
-              Column(
-                children: [
-                  Image.asset(ImagesManger.bagIcon),
-                  Text('Order' , style: TextStyle(
-                      fontSize: 12.sp ,
-                      color: Colors.grey
-
-                  ),)
-                ],
+                    ),)
+                  ],
+                ),
               ),
-              Column(
-                children: [
-                  Image.asset(ImagesManger.userIcon),
-                  Text('Profile' , style: TextStyle(
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, AppRouteStrings.order);
+                },
+                child: Column(
+                  children: [
+                    Image.asset(ImagesManger.bagIcon),
+                    Text('Order' , style: TextStyle(
+                        fontSize: 12.sp ,
+                        color: Colors.grey
+
+                    ),)
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, AppRouteStrings.profile);
+                },
+                child: Column(
+                  children: [
+                    Image.asset(ImagesManger.userIcon),
+                    Text('Profile' , style: TextStyle(
                       fontSize: 12.sp ,
                       color: Colors.grey ,
 
-                  ),)
-                ],
+                    ),)
+                  ],
+                ),
               ),
-
-          ],
-              ),
-            ),
-          );
+            ],
+          ),
+        ),
+      ],
+    );
   }
-
   AppBar buildAppBar() {
     return AppBar(
       centerTitle: false,

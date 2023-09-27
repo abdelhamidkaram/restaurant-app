@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:food/features/auth/pages/register_screen.dart';
 import 'package:food/features/auth/pages/welcom_screen.dart';
 import 'package:food/features/home/peresintation/pages/home_screen.dart';
+import 'package:food/features/order/peresintation/pages/order_screen.dart';
+import 'package:food/features/profile/peresintation/pages/profile_screen.dart';
 
 import '../../features/auth/pages/login_screen.dart';
 import '../../features/auth/pages/reset_password.dart';
@@ -15,6 +17,8 @@ class AppRouteStrings {
   static const String register = "/register";
   static const String home = "/home";
   static const String resetPassword = "/resetPassword";
+  static const String order = "/order";
+  static const String profile = "/profile";
 
 
 }
@@ -46,6 +50,16 @@ class AppRoute {
       case AppRouteStrings.resetPassword:
         return MaterialPageRoute(
           builder: (context) => const ResetPassword(),
+        );
+
+      case AppRouteStrings.order:
+        return MaterialPageRoute(
+          builder: (context) => const OrderScreen(),
+        );
+
+      case AppRouteStrings.profile:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileScreen(),
         );
 
       default:
