@@ -2,7 +2,7 @@ class AppStrings {
   static const String appName = "Restaurant";
   static const String app = "App";
   static const String unDefinedRouteMSG = " No Route Found ... ";
-  static const String fontFamily = "cabin";
+  static const String fontFamily = "metropolis";
 
   static const String login = "Login";
   static const String signUp = "Sign Up";
