@@ -7,4 +7,5 @@ class ImagesManger {
   static const String bagIcon = "$imagePath/bag.png";
   static const String homeIcon = "$imagePath/home-icon.png";
   static const String userIcon = "$imagePath/user-icon.png";
+  static const String favoriteIcon = "$imagePath/favorite.png";
 }

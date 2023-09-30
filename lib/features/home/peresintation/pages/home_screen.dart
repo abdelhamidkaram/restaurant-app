@@ -9,6 +9,7 @@ import 'package:food/features/home/peresintation/bloc/home_cubit.dart';
 import 'package:food/features/home/peresintation/widgets/slider_widget.dart';
 import 'package:food/features/home/peresintation/widgets/tabs_widget.dart';
 
+import '../../../../core/shared_widgets/bottom_nav_bar.dart';
 import '../widgets/popular_product_Widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -36,8 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
             appBar: buildAppBar(),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: buildFloatingActionButton(),
-            floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+            floatingActionButton: buildFloatingActionButton(context: context),
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -102,73 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildFloatingActionButton() {
-    return  Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Container(
-          width: 220.w,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(
-              color: AppColors.greyLight ,
-            ) ,
-            borderRadius: BorderRadius.circular(12)
-          ),
-          padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w , vertical: 10.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: (){
-                  Navigator.pushReplacementNamed(context, AppRouteStrings.home);
-                },
-                child: Column(
-                  children: [
-                    Image.asset(ImagesManger.homeIcon),
-                    Text('Home' , style: TextStyle(
-                        fontSize: 12.sp ,
-                        color: Colors.grey
-                    ),)
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, AppRouteStrings.order);
-                },
-                child: Column(
-                  children: [
-                    Image.asset(ImagesManger.bagIcon),
-                    Text('Order' , style: TextStyle(
-                        fontSize: 12.sp ,
-                        color: Colors.grey
-
-                    ),)
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, AppRouteStrings.profile);
-                },
-                child: Column(
-                  children: [
-                    Image.asset(ImagesManger.userIcon),
-                    Text('Profile' , style: TextStyle(
-                      fontSize: 12.sp ,
-                      color: Colors.grey ,
-
-                    ),)
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
   AppBar buildAppBar() {
     return AppBar(
       centerTitle: false,

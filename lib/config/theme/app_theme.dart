@@ -35,6 +35,7 @@ ThemeData appTheme() => ThemeData(
       ),
       fontFamily: AppStrings.fontFamily,
       scaffoldBackgroundColor: Colors.white,
+
       cardTheme: CardTheme(
         elevation: 0,
         color: AppColors.greyLight,
