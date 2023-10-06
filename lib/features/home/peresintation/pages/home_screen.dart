@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food/config/route/app_route.dart';
 import 'package:food/core/models/product.dart';
 import 'package:food/core/utils/app_colors.dart';
-import 'package:food/core/utils/assets_manger.dart';
 import 'package:food/features/home/peresintation/bloc/home_cubit.dart';
 import 'package:food/features/home/peresintation/widgets/slider_widget.dart';
 import 'package:food/features/home/peresintation/widgets/tabs_widget.dart';
-
 import '../../../../core/shared_widgets/bottom_nav_bar.dart';
+import '../../../../core/shared_widgets/cart_icon.dart';
 import '../widgets/popular_product_Widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -107,10 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       centerTitle: false,
       backgroundColor: AppColors.white,
       actions: [
-        const Icon(
-          Icons.shopping_cart,
-          color: Colors.black,
-        ),
+        CartIcon(context: context),
         SizedBox(
           width: 20.w,
         ),
@@ -127,3 +122,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

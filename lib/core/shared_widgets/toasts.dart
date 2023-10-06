@@ -31,5 +31,5 @@ class AppToasts {
       );
 
   static toastSuccess({required String msg}) =>
-      EasyLoading.showToast(msg);
+      EasyLoading.showToast(msg , toastPosition: EasyLoadingToastPosition.bottom);
 }

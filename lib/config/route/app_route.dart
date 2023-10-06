@@ -4,12 +4,13 @@ import 'package:food/core/models/product.dart';
 import 'package:food/features/auth/pages/register_screen.dart';
 import 'package:food/features/auth/pages/welcom_screen.dart';
 import 'package:food/features/home/peresintation/pages/home_screen.dart';
-import 'package:food/features/order/peresintation/pages/order_screen.dart';
 import 'package:food/features/profile/peresintation/pages/profile_screen.dart';
 import 'package:food/features/single_product/peresintation/pages/single_screen.dart';
 
 import '../../features/auth/pages/login_screen.dart';
 import '../../features/auth/pages/reset_password.dart';
+import '../../features/cart/peresintation/pages/cart_screen.dart';
+import '../../features/my_orders/peresintation/pages/my_order_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouteStrings {
@@ -22,6 +23,7 @@ class AppRouteStrings {
   static const String order = "/order";
   static const String profile = "/profile";
   static const String singleProduct = "/singleProduct";
+  static const String cart = "/cart";
 
 
 }
@@ -71,6 +73,14 @@ class AppRoute {
           builder: (context){
             Product product = routeSettings.arguments as Product ;
             return  SingleProduct(product: product );
+          },
+        );
+
+      case AppRouteStrings.cart:
+
+        return MaterialPageRoute(
+          builder: (context){
+            return  const CartScreen();
           },
         );
 
