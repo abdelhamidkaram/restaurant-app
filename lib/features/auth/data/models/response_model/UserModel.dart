@@ -1,9 +1,19 @@
+import 'package:json_annotation/json_annotation.dart';
+
+@JsonSerializable()
 class UserModel{
+  @JsonKey(name : "id")
   int? id;
+
+  @JsonKey(name : "name")
   String? name;
+  @JsonKey(name : "email")
   String? email;
+  @JsonKey(name : "phone")
   String? phone;
+  @JsonKey(name : "address")
   String? address;
+  @JsonKey(name : "jwtToken")
   String? jwtToken;
 
   UserModel(

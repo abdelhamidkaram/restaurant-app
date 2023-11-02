@@ -76,7 +76,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   // if (cubit.formKey.currentState!.validate()) {
                                   cubit.login().then((value) {
                                     if (value) {
-                                      AppToasts.hideLoading();
                                       Navigator.pushNamed(
                                           context, AppRouteStrings.home);
                                     }

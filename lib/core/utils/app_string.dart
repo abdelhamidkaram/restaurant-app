@@ -9,6 +9,9 @@ class AppStrings {
 
   static const String welcomeScreenSubTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep";
   static const String pleaseEnter = "please enter your ";
+  static const String bothPasswordMustBeSame = "Both Password Must Be Same";
+
+
 
   static const String loginScreenLoginBtnTxt = "Login";
   static const String loginScreenSubTitle = "Add your details to login";

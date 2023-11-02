@@ -37,7 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           var formKey = cubit.formKey;
           var emailController = cubit.emailController;
           var nameController = cubit.nameController;
-          var mobileController = cubit.mobileController;
+          var mobileController = cubit.phoneController;
           var addressController = cubit.addressController;
           var passwordController = cubit.passwordController;
           var confirmPasswordController = cubit.confirmPasswordController;

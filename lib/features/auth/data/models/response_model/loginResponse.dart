@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:food/features/auth/data/models/response_model/UserModel.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 class LoginResponse extends Equatable {
   int? status;

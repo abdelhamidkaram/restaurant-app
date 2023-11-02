@@ -7,24 +7,25 @@ class RegisterRequestModel extends Equatable {
 
   final String address;
 
-  final String mobile;
+  final String phone;
 
   final String password;
 
   const RegisterRequestModel(
-      {required this.email,
-      required this.name,
+      {required this.name,
+        required this.email,
       required this.address,
-      required this.mobile,
+      required this.phone,
       required this.password});
 
 
   toJson()=>{
-    'email':email,
     'name':name,
-    'mobile':mobile,
-    'address':address,
+    'email':email,
+    'phone':phone,
     'password':password,
+    'address':address,
+    'firebase_token': 'firebase'
   };
 
   @override
