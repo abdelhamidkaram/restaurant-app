@@ -70,15 +70,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 type: TextInputType.visiblePassword),
                             SizedBox(height: 20.h),
                             MainButton(
-                                text: AppStrings.signUp,
+                                text: AppStrings.login,
                                 onTap: () {
                                   if (cubit.formKey.currentState!.validate()) {
                                     cubit.login().then((value) {
                                       if (value) {
+                                        AppToasts.hideLoading();
                                         Navigator.pushNamed(
                                             context, AppRouteStrings.home);
                                       } else {
-                                        AppToasts.toastError(msg: 'Error ');
+                                        AppToasts.toastError(msg: cubit.loginResponse?.message??"");
                                       }
                                     });
                                   }
@@ -87,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       TextButton(onPressed: (){
-                        Navigator.pushNamed(context, AppRouteStrings.resetPassword);
+                        Navigator.pushNamed(context, AppRouteStrings.foregetPassword);
                       }, child: Text(AppStrings.forgetPassword)),
                       SizedBox(
                         height: 24.h,

@@ -8,6 +8,7 @@ class AppStrings {
   static const String signUp = "Sign Up";
 
   static const String welcomeScreenSubTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep";
+  static const String pleaseEnter = "please enter your ";
 
   static const String loginScreenLoginBtnTxt = "Login";
   static const String loginScreenSubTitle = "Add your details to login";
@@ -15,12 +16,17 @@ class AppStrings {
 
   static const String registerScreenSubTitle = "Add your details to sign up";
 
+
+
+  static const String submit = "Submit";
   static const String name = "Name";
   static const String email = "Email";
   static const String mobile = "Mobile No";
   static const String address = "Address";
   static const String password = "Password";
   static const String confirmPassword = "Confirm Password";
+  static const String validPhone = "Valid Phone";
+
 
   static const String hintEmail = "Your Email";
 
@@ -31,6 +37,9 @@ class AppStrings {
   static String doNotHaveAccount = "Don't have an Account? ";
 
   static String forgetPassword = "Forgot your password? ";
+
+  static const String pleaseTryAgain = "Something is wrong please try again";
+
 
 
 }

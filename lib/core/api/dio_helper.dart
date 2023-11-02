@@ -13,6 +13,8 @@ class  DioHelper{
     receiveTimeout: const Duration(seconds: 120),
   ),);
 
+
+
   static Future<Response> getData({required String endpoint , Map<String, dynamic>? queryParameters}){
   return dio.get(endpoint , queryParameters: queryParameters);
   }

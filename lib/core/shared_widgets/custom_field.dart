@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/app_string.dart';
 
 class CustomField extends StatefulWidget {
   final TextEditingController controller ;
@@ -42,7 +43,7 @@ class _CustomFieldState extends State<CustomField> {
                   return _validation(value);
 
                 }
-                return 'This field is required' ;
+                return AppStrings.pleaseEnter + widget.hit ;
               },
               keyboardType: widget.type,
               obscureText: widget.isObscure ? isShow : false,
@@ -65,20 +66,20 @@ class _CustomFieldState extends State<CustomField> {
   String? _validation(String value) {
     RegExp emailRegex = RegExp(r'^\S+@\S+$');
     RegExp phoneRegex = RegExp(r'^01[0125][0-9]{8}$');
-    RegExp passwordRegex = RegExp(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$');
+    RegExp passwordRegex = RegExp(r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])$');
     if(widget.type == TextInputType.emailAddress){
       if(!emailRegex.hasMatch(value)){
-        return 'invalid email ';
+        return AppStrings.pleaseEnter + widget.hit;
       }
     }
     if(widget.type == TextInputType.phone){
       if(!phoneRegex.hasMatch(value)){
-        return 'invalid mobile number ';
+        return AppStrings.pleaseEnter + AppStrings.validPhone;
       }
     }
     if(widget.type == TextInputType.visiblePassword){
-      if(!passwordRegex.hasMatch(value)){
-        return 'this password not strong ';
+      if(value.isEmpty){
+        return AppStrings.pleaseEnter + AppStrings.password;
       }
 
     }

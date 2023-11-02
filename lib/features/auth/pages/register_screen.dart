@@ -10,6 +10,8 @@ import 'package:food/core/utils/app_colors.dart';
 import 'package:food/core/utils/app_string.dart';
 import 'package:food/features/auth/bloc/register_cubit/register_cubit.dart';
 
+import '../../../core/shared_widgets/custom_toolbar.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -57,10 +59,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 12.h,
                       ),
-                      Text(
-                        AppStrings.signUp,
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
+                      // Text(
+                      //   AppStrings.signUp,
+                      //   style: Theme.of(context).textTheme.headlineLarge,
+                      // ),
+                      CustomToolbar(title: AppStrings.signUp,showBack: true),
                       SizedBox(height: 12.h),
                       Text(
                         AppStrings.registerScreenSubTitle,

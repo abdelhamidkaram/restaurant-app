@@ -17,9 +17,14 @@ class AppRouteStrings {
   static const String initial = "/";
   static const String welcome = "/welcome";
   static const String login = "/login";
+  static const String confirmCode = "/confirmCode";
+  static const String changePassword = "/changePassword";
+
   static const String register = "/register";
   static const String home = "/home";
+  static const String foregetPassword = "/forgetPassword";
   static const String resetPassword = "/resetPassword";
+
   static const String order = "/order";
   static const String profile = "/profile";
   static const String singleProduct = "/singleProduct";
