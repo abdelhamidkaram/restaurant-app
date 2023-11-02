@@ -22,33 +22,32 @@ class LoginCubit extends Cubit<LoginState> {
   LoginResponse? loginResponse;
 
   Future<bool> login() async {
+    if(emailController.text.isEmpty){
+      AppToasts.toastError(msg: AppStrings.pleaseEnter + AppStrings.email);
+      return false;
+    }
+    if(passwordController.text.isEmpty){
+      AppToasts.toastError(msg: AppStrings.pleaseEnter + AppStrings.password);
+      return false;
+    }
     emit(LoginLoading());
     AppToasts.toastLoading();
     LoginRequestModel req = LoginRequestModel(
         email: emailController.text, password: passwordController.text);
     try {
       var response = await DioHelper.postData(endpoint: ApiEndPoints.login,body: req.toJson());
-      print("==>>"+response.data);
       emit(LoginSuccess());
       loginResponse = response.data as LoginResponse;
       //TODO save user in session
-      // AppToasts.toastSuccess(msg: loginResponse?.message??"");
       return Future(() => true);
-    } on LoginResponseError catch (e) {
-      print("==>>ERROR "+e.message.toString());
+    } on Exception catch (e) {
+     // print("==>>ERROR "+e.message.toString());
       if (kDebugMode) {
         print(e.toString());
       }
-      AppToasts.toastError(msg: AppStrings.pleaseTryAgain);
+      //AppToasts.toastError(msg: AppStrings.pleaseTryAgain);
       emit(LoginError());
       return Future(() => false);
     }
   }
-
-
-}
-
-class LoginResponseError implements Exception{
-  int? status;
-  String? message;
 }

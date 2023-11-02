@@ -12,6 +12,7 @@ import '../../../core/shared_widgets/custom_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -72,24 +73,25 @@ class _LoginScreenState extends State<LoginScreen> {
                             MainButton(
                                 text: AppStrings.login,
                                 onTap: () {
-                                  if (cubit.formKey.currentState!.validate()) {
-                                    cubit.login().then((value) {
-                                      if (value) {
-                                        AppToasts.hideLoading();
-                                        Navigator.pushNamed(
-                                            context, AppRouteStrings.home);
-                                      } else {
-                                        AppToasts.toastError(msg: cubit.loginResponse?.message??"");
-                                      }
-                                    });
-                                  }
+                                  // if (cubit.formKey.currentState!.validate()) {
+                                  cubit.login().then((value) {
+                                    if (value) {
+                                      AppToasts.hideLoading();
+                                      Navigator.pushNamed(
+                                          context, AppRouteStrings.home);
+                                    }
+                                  });
+                                  // }
                                 }),
                           ],
                         ),
                       ),
-                      TextButton(onPressed: (){
-                        Navigator.pushNamed(context, AppRouteStrings.foregetPassword);
-                      }, child: Text(AppStrings.forgetPassword)),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, AppRouteStrings.foregetPassword);
+                          },
+                          child: Text(AppStrings.forgetPassword)),
                       SizedBox(
                         height: 24.h,
                       ),
@@ -98,15 +100,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text(AppStrings.doNotHaveAccount),
                           TextButton(
-                            child:const Text(AppStrings.signUp),
-                              onPressed: () {
-                                Navigator.pushNamed(
+                            child: const Text(AppStrings.signUp),
+                            onPressed: () {
+                              Navigator.pushNamed(
                                   context, AppRouteStrings.register);
                             },
                           )
                         ],
                       ),
-                      SizedBox(height: 24.h,),
+                      SizedBox(
+                        height: 24.h,
+                      ),
                     ],
                   ),
                 ),

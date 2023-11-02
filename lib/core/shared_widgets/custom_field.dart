@@ -35,16 +35,17 @@ class _CustomFieldState extends State<CustomField> {
           child: Padding(
             padding:  EdgeInsets.only(left: 34.0.w),
             child: TextFormField(
+              controller: widget.controller,
               onChanged: widget.onChange,
-              validator:widget.validation ?? (String? value) {
-
-                if(value != null){
-
-                  return _validation(value);
-
-                }
-                return AppStrings.pleaseEnter + widget.hit ;
-              },
+              // validator:widget.validation ?? (String? value) {
+              //
+              //   if(value != null){
+              //
+              //     return _validation(value);
+              //
+              //   }
+              //   return AppStrings.pleaseEnter + widget.hit ;
+              // },
               keyboardType: widget.type,
               obscureText: widget.isObscure ? isShow : false,
               decoration:  InputDecoration(
