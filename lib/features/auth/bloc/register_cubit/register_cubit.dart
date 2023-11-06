@@ -57,9 +57,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       return false;
     }
 
-    emit(RegisterLoading());
     bool isSign = false;
-    var registerRequestModel = RegisterRequestModel(
+    var req = RegisterRequestModel(
       name: nameController.text,
       email: emailController.text,
       phone: phoneController.text,
@@ -67,23 +66,36 @@ class RegisterCubit extends Cubit<RegisterState> {
       address: addressController.text,
     );
 
-    DioHelper.postData(
-            endpoint: ApiEndPoints.register,
-            body: registerRequestModel.toJson())
-        .then((value) {
+    try {
+      // emit(RegisterLoading());
+      var response = await DioHelper.postData(endpoint: ApiEndPoints.register,body: req.toJson());
       isSign = true;
-      //TODO save user
-      LoginResponse loginResponse =  value.data as LoginResponse;
-      AppSharedPreferences.setKey(AppConstants.TOKEN, loginResponse.data!.jwtToken!.toString());
-      emit(RegisterSuccess());
-    }).catchError((e) {
-      debugPrint(e.toString());
-      isSign = false;
-      String msg = AppStrings.internalError;
-      AppToasts.toast(msg: msg);
-      emit(RegisterError());
-    });
-    return Future.value(isSign);
+      LoginResponse loginResponse = LoginResponse.fromJson(response.data);
+      await AppSharedPreferences.saveUser(AppConstants.USER, loginResponse.data!);
+      // emit(RegisterSuccess());
+      return Future(() => true);
+    } on Exception catch (e) {
+      // emit(RegisterError());
+      return Future(() => false);
+    }
+
+    // DioHelper.postData(
+    //         endpoint: ApiEndPoints.register,
+    //         body: registerRequestModel.toJson())
+    //     .then((value) {
+    //   isSign = true;
+    //   //TODO save user
+    //   LoginResponse loginResponse =  value.data as LoginResponse;
+    //   AppSharedPreferences.setKey(AppConstants.TOKEN, loginResponse.data!.jwtToken!.toString());
+    //   emit(RegisterSuccess());
+    // }).catchError((e) {
+    //   debugPrint(e.toString());
+    //   isSign = false;
+    //   String msg = AppStrings.internalError;
+    //   AppToasts.toast(msg: msg);
+    //   emit(RegisterError());
+    // });
+    // return Future.value(isSign);
   }
 
 }

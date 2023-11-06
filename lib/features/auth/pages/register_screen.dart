@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => RegisterCubit(),
-      child: BlocConsumer<RegisterCubit,RegisterState>(
+      child: BlocConsumer<RegisterCubit, RegisterState>(
         listener: (context, state) => RegisterCubit(),
         builder: (context, state) {
           var cubit = RegisterCubit.get(context);
@@ -44,12 +44,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
           var password = '';
           var confirmPassword = '';
           return Scaffold(
-            floatingActionButton: FloatingActionButton(
-              child: Text('Go To Home'),
-              onPressed: (){
-                Navigator.pushNamed(context, AppRouteStrings.home);
-              },
-            ),
+            // resizeToAvoidBottomInset: false,
+            // floatingActionButton: FloatingActionButton(
+            //   child: Text('Go To Home'),
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, AppRouteStrings.home);
+            //   },
+            // ),
             body: SingleChildScrollView(
               child: SafeArea(
                 child: Padding(
@@ -63,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       //   AppStrings.signUp,
                       //   style: Theme.of(context).textTheme.headlineLarge,
                       // ),
-                      CustomToolbar(title: AppStrings.signUp,showBack: true),
+                      CustomToolbar(title: AppStrings.signUp, showBack: true),
                       SizedBox(height: 12.h),
                       Text(
                         AppStrings.registerScreenSubTitle,
@@ -103,48 +104,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             CustomField(
                                 controller: passwordController,
                                 isObscure: true,
-                                onChange: (val){
-                                  password = val ??'';
+                                onChange: (val) {
+                                  password = val ?? '';
                                 },
                                 hit: AppStrings.password,
                                 type: TextInputType.visiblePassword),
                             SizedBox(height: 20.h),
                             CustomField(
-                                controller: confirmPasswordController,
-                                isObscure: true,
-                                hit: AppStrings.confirmPassword,
-                                onChange: (val){
-                                  confirmPassword=val??'';
-                                },
-                                validation: (val){
-                                  if(val!.isEmpty) {
-                                    return 'Empty';
-                                  }
-                                  if(confirmPassword != password) {
-                                    return 'Not Match';
-                                  }
-                                  return null;
-                                },
-                                type: TextInputType.visiblePassword,
-
+                              controller: confirmPasswordController,
+                              isObscure: true,
+                              hit: AppStrings.confirmPassword,
+                              onChange: (val) {
+                                confirmPassword = val ?? '';
+                              },
+                              validation: (val) {
+                                if (val!.isEmpty) {
+                                  return 'Empty';
+                                }
+                                if (confirmPassword != password) {
+                                  return 'Not Match';
+                                }
+                                return null;
+                              },
+                              type: TextInputType.visiblePassword,
                             ),
                             SizedBox(height: 20.h),
                             MainButton(
                                 text: AppStrings.signUp,
                                 onTap: () {
-                                    cubit.signUp();
-                                    if (cubit.formKey.currentState!.validate()) {
-                                      cubit.signUp().then((value) {
-                                        if (value) {
-                                          Navigator.pushNamed(
-                                              context, AppRouteStrings.home);
-                                        } else {
-                                          AppToasts.toastError(msg: 'error ..');
-                                        }
-                                      });
-                                    } else {
-                                      AppToasts.toastError(msg: 'error ..');
+                                  // cubit.signUp();
+                                  // if (cubit.formKey.currentState!.validate()) {
+                                  cubit.signUp().then((value) {
+                                    if (value) {
+                                      Navigator.pushNamed(
+                                          context, AppRouteStrings.home);
                                     }
+                                  });
+                                  // }
                                 }),
                           ],
                         ),

@@ -49,15 +49,21 @@ class DioHelper {
   }
 
   static Future<Response> getData(
-      {required String endpoint, Map<String, dynamic>? queryParameters}) {
+      {required String endpoint, Map<String, dynamic>? queryParameters,bool showLoader = true}) {
     FocusManager.instance.primaryFocus?.unfocus(); //hide keyboard
+    if(showLoader) {
+      AppToasts.toastLoading();
+    }
     return getDio().get(endpoint, queryParameters: queryParameters);
   }
 
   static Future<Response> postData(
       {required String endpoint,
       Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? body}) {
+      Map<String, dynamic>? body,bool showLoader = true}) {
+    if(showLoader) {
+      AppToasts.toastLoading();
+    }
     FocusManager.instance.primaryFocus?.unfocus(); //hide keyboard
     return getDio()
         .post(endpoint, data: body, queryParameters: queryParameters);
@@ -67,7 +73,10 @@ class DioHelper {
   static Future<Response> putData(
       {required String endpoint,
       Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? body}) {
+      Map<String, dynamic>? body,bool showLoader = true}) {
+    if(showLoader) {
+      AppToasts.toastLoading();
+    }
     FocusManager.instance.primaryFocus?.unfocus(); //hide keyboard
     return getDio().put(endpoint, data: body, queryParameters: queryParameters);
   }

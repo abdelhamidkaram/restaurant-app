@@ -35,29 +35,19 @@ class LoginCubit extends Cubit<LoginState> {
       AppToasts.toastError(msg: AppStrings.pleaseEnter + AppStrings.password);
       return false;
     }
-    emit(LoginLoading());
-    AppToasts.toastLoading();
-    LoginRequestModel req = LoginRequestModel(
-        email: emailController.text, password: passwordController.text);
+    // emit(LoginLoading());
+    // AppToasts.toastLoading();
+    LoginRequestModel req = LoginRequestModel(email: emailController.text, password: passwordController.text);
     try {
       var response = await DioHelper.postData(endpoint: ApiEndPoints.login,body: req.toJson());
       LoginResponse loginResponse = LoginResponse.fromJson(response.data);
       await AppSharedPreferences.saveUser(AppConstants.USER, loginResponse.data!);
-      UserModel userModel = await AppSharedPreferences.getUser();
-      print("osamaYarb=>${userModel.id},${userModel.name}");
       emit(LoginSuccess());
-      // print("hereosama[====:${response.data}");
-      // LoginResponse loginResponse = LoginResponse.fromJson(jsonDecode(response.data.toString()));
-      // var userModel = response.data["data"] as UserModel;
-      // print("=>RESPONSEosama${loginResponse.message}");
-      //TODO save user in session
       return Future(() => true);
     } on Exception catch (e) {
-     // print("==>>ERROR "+e.message.toString());
       if (kDebugMode) {
         print(e.toString());
       }
-      //AppToasts.toastError(msg: AppStrings.pleaseTryAgain);
       emit(LoginError());
       return Future(() => false);
     }
