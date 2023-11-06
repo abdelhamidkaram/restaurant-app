@@ -51,6 +51,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         AppStrings.loginScreenSubTitle,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
                       Form(
                         key: cubit.formKey,
                         child: Column(
@@ -88,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextButton(
                           onPressed: () {
                             Navigator.pushNamed(
-                                context, AppRouteStrings.foregetPassword);
+                                context, AppRouteStrings.forgetPassword);
                           },
                           child: Text(AppStrings.forgetPassword)),
                       SizedBox(

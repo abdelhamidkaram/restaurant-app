@@ -9,25 +9,26 @@ import '../../../core/shared_widgets/buttons/main_button.dart';
 import '../../../core/shared_widgets/custom_field.dart';
 import '../../../core/shared_widgets/toasts.dart';
 import '../../../core/utils/app_string.dart';
+import '../bloc/confirm_code_cubit/confirm_code_cubit.dart';
 import '../bloc/forget_password_cubit/forget_password_cubit.dart';
 
-class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({super.key});
+class ConfirmCode extends StatefulWidget {
+  const ConfirmCode({super.key});
 
   @override
-  State<ForgetPassword> createState() => _ForgetPasswordState();
+  State<ConfirmCode> createState() => _ConfirmCodeState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
+class _ConfirmCodeState extends State<ConfirmCode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => ForgetPasswordCubit(),
-        child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
-          listener: (context, state) => ForgetPasswordCubit(),
+        create: (context) => ConfirmCodeCubit(),
+        child: BlocConsumer<ConfirmCodeCubit, ConfirmCodeState>(
+          listener: (context, state) => ConfirmCodeCubit(),
           builder: (context, state) {
-            var cubit = ForgetPasswordCubit.get(context);
+            var cubit = ConfirmCodeCubit.get(context);
             return SingleChildScrollView(
               child: SafeArea(
                 child: Padding(
@@ -38,20 +39,18 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         height: 12.h,
                       ),
                       CustomToolbar(
-                          title: AppStrings.forgetPasswordTitle,
+                          title: AppStrings.confirmCode,
                           showBack: true),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 12.h),
                       CustomText(
-                          title: AppStrings.pleaseEnterYourEmailToRecieveLink,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium,fontSize: 20),
+                          title: AppStrings.weHaveSendOTPTOYourEmail,
+                          style: Theme.of(context).textTheme.bodyMedium),
                       // CustomText(AppStrings.pleaseEnterYourEmailToRecieveLink,Theme.of(context).textTheme.bodyMedium),
                       // Text(
                       //   AppStrings.pleaseEnterYourEmailToRecieveLink,
                       //   maxLines: 2,
                       //   style: Theme.of(context).textTheme.bodyMedium,
                       // ),
-                      SizedBox(height: 15.h),
                       Form(
                         key: cubit.formKey,
                         child: Column(
@@ -59,23 +58,21 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           children: [
                             SizedBox(height: 20.h),
                             CustomField(
-                              controller: cubit.emailController,
+                              textAlign: TextAlign.center,
+                              controller: cubit.codeController,
                               isObscure: false,
-                              hit: AppStrings.email,
-                              type: TextInputType.emailAddress,
+                              hit: 'xxxxx',
+                              type: TextInputType.number,
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
                       MainButton(
                         text: AppStrings.submit,
                         onTap: () {
-                          cubit.forget_password().then((value) => {
+                          cubit.confirmCode().then((value) => {
                                 Navigator.pushNamed(
-                                    context, AppRouteStrings.confirmCode)
+                                    context, AppRouteStrings.changePassword)
                               });
                         },
                       )

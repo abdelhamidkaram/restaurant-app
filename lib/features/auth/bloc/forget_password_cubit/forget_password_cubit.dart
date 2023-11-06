@@ -7,6 +7,8 @@ import 'package:food/core/api/dio_helper.dart';
 import 'package:food/core/shared_widgets/toasts.dart';
 import 'package:food/features/auth/data/models/request_model/forget_password_request_model.dart';
 
+import '../../../../core/utils/app_string.dart';
+
 part 'forget_password_state.dart';
 
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
@@ -17,19 +19,22 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   var emailController = TextEditingController();
 
   Future<bool> forget_password() async {
-    emit(ForgetPasswordLoading());
-    AppToasts.toastLoading();
+    // emit(ForgetPasswordLoading());
     ForgetPasswordRequestModel req = ForgetPasswordRequestModel(email: emailController.text);
+    if(emailController.text.isEmpty){
+      AppToasts.toastError(msg: AppStrings.pleaseEnter + AppStrings.email);
+      return false;
+    }
     try {
       await DioHelper.postData(endpoint: ApiEndPoints.forgetPassword,body: req.toJson());
-      emit(ForgetPasswordSuccess());
-      AppToasts.toastSuccess(msg: '');
+      // emit(ForgetPasswordSuccess());
+      // AppToasts.toastSuccess(msg: '');
       return Future(() => true);
     } on Exception catch (e) {
       if (kDebugMode) {
         print(e.toString());
       }
-      emit(ForgetPasswordError());
+      // emit(ForgetPasswordError());
       return Future(() => false);
     }
   }

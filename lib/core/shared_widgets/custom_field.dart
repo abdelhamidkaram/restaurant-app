@@ -9,12 +9,14 @@ class CustomField extends StatefulWidget {
   final TextInputType type ;
   final String?Function(String?)?  validation ;
   final  Function(String?)? onChange ;
+  final TextAlign textAlign;
   const CustomField({
     super.key,
     required this.controller,
     required this.isObscure,
     required this.hit,
     required this.type,
+    this.textAlign = TextAlign.start,
     this.validation, this.onChange,
   });
 
@@ -35,6 +37,7 @@ class _CustomFieldState extends State<CustomField> {
           child: Padding(
             padding:  EdgeInsets.only(left: 34.0.w),
             child: TextFormField(
+              textAlign: widget.textAlign,
               controller: widget.controller,
               onChanged: widget.onChange,
               // validator:widget.validation ?? (String? value) {
