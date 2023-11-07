@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/core/models/product.dart';
+import 'package:food/features/auth/pages/confirm_code.dart';
 import 'package:food/features/auth/pages/forget_password.dart';
 import 'package:food/features/auth/pages/register_screen.dart';
 import 'package:food/features/auth/pages/welcom_screen.dart';
@@ -51,8 +52,10 @@ class AppRoute {
           builder: (context) => const ForgetPassword(),
         );
       case AppRouteStrings.confirmCode:
+        var args = routeSettings.arguments.toString();
+        print("email is: $args");
         return MaterialPageRoute(
-          builder: (context) => const ForgetPassword(),
+          builder: (context) => const ConfirmCode(),
         );
 
       case AppRouteStrings.register:

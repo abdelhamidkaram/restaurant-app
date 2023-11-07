@@ -74,9 +74,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         text: AppStrings.submit,
                         onTap: () {
                           cubit.forget_password().then((value) => {
-                                Navigator.pushNamed(
-                                    context, AppRouteStrings.confirmCode)
-                              });
+                            Navigator.pushNamed(
+                                    context, AppRouteStrings.confirmCode,arguments: cubit.emailController.text)
+                              }
+                            );
                         },
                       )
                     ],
